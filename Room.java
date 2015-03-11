@@ -1,8 +1,11 @@
 public class Room {
 
-    private int[] nbrs;
+    private int[] nbrs; //holds the identifying numbers of neighboring rooms
+	//Note that as of now a room does not
+	//know its own identifying number.
  
-    public Room(int parent, int newLoc)
+	//Constructor taking id number of the room that created it 
+    public Room(int parent)
     {
         nbrs = new int[4];
         for (int i = 0; i < 4; i++)
@@ -10,6 +13,7 @@ public class Room {
         nbrs[0] = parent;
     }
  
+	//Constructor creates a room with no connections (base step)
     public Room()
     {
         nbrs = new int[4];
@@ -21,7 +25,8 @@ public class Room {
     {
         return nbrs;
     }
- 
+	
+	//Returns true is there is an open spot in nbrs[]
     public boolean isOpen()
     {
         for (int v : nbrs)
@@ -30,6 +35,7 @@ public class Room {
         return false;
     }
  
+	//Returns true if the given index appears in nbrs[]
     public boolean isNbr(int index)
     {
         for (int v: nbrs)
@@ -38,6 +44,7 @@ public class Room {
         return false;
     }
  
+	//Places given id number in first open spot in nbrs[]
     public void connect(int parent)
     {
         for (int i = 0; i < 4; i++)
