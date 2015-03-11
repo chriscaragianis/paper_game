@@ -9,7 +9,7 @@ public class Room {
     {
         nbrs = new int[4];
         for (int i = 0; i < 4; i++)
-        nbrs[i] = -1;
+			nbrs[i] = -1;
         nbrs[0] = parent;
     }
  
@@ -18,7 +18,7 @@ public class Room {
     {
         nbrs = new int[4];
         for (int i = 0; i < 4; i++)
-        nbrs[i] = -1;
+			nbrs[i] = -1;
     }
  
     public int[] getNbrs()
@@ -30,8 +30,8 @@ public class Room {
     public boolean isOpen()
     {
         for (int v : nbrs)
-        if (v == -1)
-        return true;
+			if (v == -1)
+				return true;
         return false;
     }
  
@@ -39,8 +39,8 @@ public class Room {
     public boolean isNbr(int index)
     {
         for (int v: nbrs)
-        if (v == index)
-        return true;
+			if (v == index)
+				return true;
         return false;
     }
  
@@ -48,11 +48,11 @@ public class Room {
     public void connect(int parent)
     {
         for (int i = 0; i < 4; i++)
-        if (nbrs[i] == -1)
-        {  
-            nbrs[i] = parent;
-            break;
-        }
+			if (nbrs[i] == -1)
+			{  
+				nbrs[i] = parent;
+				break;
+			}
     }
  
 }
