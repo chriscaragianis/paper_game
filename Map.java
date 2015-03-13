@@ -6,6 +6,10 @@ public class Map {
     private int playerLoc;
     private List<Room> rooms;
  
+ public int getPlayerLoc()
+ {
+  return playerLoc;
+ }
     public Map()
     {
         playerLoc = 0;
@@ -51,26 +55,35 @@ public class Map {
     {
         try
         {
-  	        FileWriter fout = new FileWriter("map.dot");
-  	        fout.write("graph mappy {\n  node [shape=circle]\n" );
- 	        for (int i = 0; i < rooms.size(); i++)
-    	    {
-    		    for (int v : rooms.get(i).getNbrs())
-					if (v > i)
-						fout.write(i + " -- " + v + ";\n");
-    	    }  
- 	        fout.write("}");
- 	        fout.close();
+           FileWriter fout = new FileWriter("map.dot");
+           fout.write("graph mappy {\n  node [shape=circle]\n" );
+          for (int i = 0; i < rooms.size(); i++)
+         {
+          for (int v : rooms.get(i).getNbrs())
+              if (v > i)
+                    fout.write(i + " -- " + v + ";\n");
+         }  
+          fout.write("}");
+          fout.close();
         }
         catch(IOException e)
-            return;
+        {
+          return;
+        }
     }    
  
     public void update()
     {
         Random rand = new Random();
         while (rooms.get(playerLoc).isOpen())
-			addNbr(playerLoc);
+   addNbr(playerLoc);
         playerLoc = rooms.get(playerLoc).getNbrs()[rand.nextInt(3)];
     } 
+ 
+ public void update(int i)
+ {
+  while (rooms.get(playerLoc).isOpen())
+   addNbr(playerLoc);
+        playerLoc = rooms.get(playerLoc).getNbrs()[i];
+ }
 }
