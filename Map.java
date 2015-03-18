@@ -76,14 +76,14 @@ public class Map {
     {
         Random rand = new Random();
         while (rooms.get(playerLoc).isOpen())
-   addNbr(playerLoc);
+			addNbr(playerLoc);
         playerLoc = rooms.get(playerLoc).getNbrs()[rand.nextInt(3)];
     } 
  
- public void update(int i)
- {
-  while (rooms.get(playerLoc).isOpen())
-   addNbr(playerLoc);
+	public void update(int i)
+	{
+		while (rooms.get(playerLoc).isOpen())
+			addNbr(playerLoc);
         playerLoc = rooms.get(playerLoc).getNbrs()[i];
- }
+	}
 }
